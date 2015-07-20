@@ -27,10 +27,6 @@ The build process is straight-forward:
 
 The build module is in sensors/sensors.so.
 
-To see where Lua searches for it's packages:
-
-    lua -e "print(package.path)"
-
 
 
 Test
@@ -53,3 +49,10 @@ Example:
     end
 
 (From sensors/test.lua)
+
+Please note that in order to make Lua find the module, you need to copy it to Lua's default search path,
+To list the folders Lua looks for Modules, please use:
+
+    lua -e "print(package.path:gsub(';', '\n'):gsub('?', '[?]'))"
+
+Where [?] is the module's filename.
