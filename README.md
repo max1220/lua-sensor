@@ -56,9 +56,9 @@ The module exports 3 functions. readAll, init and cleanup.
 Example:
 
 	#!/usr/bin/lua5.1
-	local sens = require("sensors")
-	for k,v in pairs(sens.readAll()) do
-		print(string.format("%s = %s", k, v))
+	local sensors = require("sensors")
+	for k,v in pairs(sensors.readAll()) do
+		print(k,v)
 	end
 
 (From `sensors/test.lua`)
