@@ -54,7 +54,9 @@ static int lua_sensor_readAll(lua_State *L) {
 			// Iterate over subfeatures of features from chip
 			for(n2 = 0; (ss = sensors_get_all_subfeatures(scn, sf, &n2)) != NULL; ) {
 				// Set scns to (chip.prefix - chip.bus.nr - chip.addr __ subfeature.name )
-				sprintf(scns, "%s-%x-%x__%s", scn->prefix, scn->bus.nr, scn->addr, ss->name);
+				char* label = sensors_get_label(scn, sf); // get the lable
+				sprintf(scns, "%s-%x-%x__%s(%s)", scn->prefix, scn->bus.nr, scn->addr, ss->name, label);
+				free(label);
 
 				// Get value from chip using subfeature.number, store result in r. If err != 0 then an error occured.
 				err = sensors_get_value(scn, ss->number, &r);
