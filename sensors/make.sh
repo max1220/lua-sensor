@@ -1,3 +1,3 @@
 #!/bin/bash
-gcc -shared -Wall -I/usr/include/lua5.1 -llua5.1 -lsensors -o sensors.so sensors.c -fpic
+gcc -Wall -Wextra -Wpedantic -fPIC -shared -I/usr/include/sensors/ -I/usr/include/lua5.1 -o sensors.so sensors.c -llua5.1 -lsensors
 strip sensors.so
